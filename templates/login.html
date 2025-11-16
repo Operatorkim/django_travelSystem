@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - Travel System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f8fa;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #1d3557;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    label {
+      font-weight: bold;
+    }
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form input[type="email"],
+form input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+    button {
+      background: #1d3557;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #457b9d;
+    }
+    p {
+      text-align: center;
+      margin-top: 10px;
+    }
+    a {
+      color: #1d3557;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+  </style>
+</head>
+<body>
+ <div class="container">
+        <h1>Login</h1>
+        
+        {% if messages %}
+            {% for message in messages %}
+               <!--  <div class="error">{{ message }}</div> -->
+                 <div class="success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div>
+                <label>Email:</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            
+            <div>
+                <label>Password:</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            
+            <button type="submit">Login</button>
+        </form>
+        
+        <p>Don't have an account? <a href="{% url 'register' %}">Register here</a></p>
+    </form>
+
+   <!-- <- <p>Do not have an account? <a href="Register.html">Register here</a></p> -->
+  </div>
+ 
+</body>
+</html>
